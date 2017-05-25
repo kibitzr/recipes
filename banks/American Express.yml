@@ -1,0 +1,16 @@
+checks:
+  - name: AmEx
+    url: https://global.americanexpress.com/dashboard
+    form:
+        - id: lilo_userName
+          creds: keyring.amex.username
+        - id: lilo_password
+          creds: keyring.amex.password
+        - id: lilo_formSubmit
+          click: true
+    delay: 10
+    transform:
+        - xpath: '//*[@id="root"]/div[1]//section//li[2]/div/div[2]/span'
+        - text
+    period: 6 hours
+    error: ignore
