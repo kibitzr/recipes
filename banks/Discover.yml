@@ -1,0 +1,14 @@
+checks:
+  - name: Discover
+    url: https://www.discover.com/
+    form:
+      - id: userid
+        creds: keyring.discover.username
+      - id: password
+        creds: keyring.discover.password
+    delay: 5
+    transform:
+        - css: .current-balance
+        - text
+    error: ignore
+    period: 6 hours
