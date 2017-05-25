@@ -1,0 +1,22 @@
+checks:
+  - name: BofA
+    url: https://www.bankofamerica.com/
+    form:
+      - id: onlineId1
+        creds: bofa.login
+      - id: passcode1
+        creds: bofa.password
+      - id: hp-sign-in-btn
+        click: true
+    delay: 5
+    transform:
+      - css-all: .balanceValue
+      - text
+      # Call line.lower to raise instead of inserting empty string in case of error:
+      - jinja: |
+          Checking: {{ lines.0.lower() }}
+          Saving: {{ lines.1.lower() }}
+          Credit: {{ lines.2.lower() }}
+      - changes: verbose
+    error: ignore
+    period: 6 hours
