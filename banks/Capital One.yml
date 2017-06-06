@@ -13,4 +13,3 @@ checks:
       - css: span#acct0_current_balance_amount
       - text
     period: 3 hours
-    error: ignore
