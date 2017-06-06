@@ -1,0 +1,16 @@
+checks:
+  - name: CapitalOne
+    url: https://verified.capitalone.com/sic-ui/#/esignin?Product=Card
+    form:
+        - id: username
+          creds: keyring.capitalone.username
+        - id: password
+          creds: keyring.capitalone.password
+        - id: id-signin-submit
+          click: true
+    delay: 10
+    transform:
+      - css: span#acct0_current_balance_amount
+      - text
+    period: 3 hours
+    error: ignore
